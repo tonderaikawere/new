@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, Typography, Box, OutlinedInput, InputAdornment, IconButton, LinearProgress } from '@mui/material';
+import { Card, CardContent, Typography, Box, OutlinedInput, InputAdornment, IconButton, LinearProgress, Slider, Grid2 as Grid } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
@@ -16,6 +16,10 @@ interface Props {
 }
 
 export default function PasswordGenerator({ options, setOptions, password, generate, onSave, copyToClipboard, strengthInfo }: Props) {
+  const handleLengthChange = (event: Event, newValue: number | number[]) => {
+    setOptions(prev => ({ ...prev, length: newValue as number }));
+  };
+
   return (
     <Card sx={{ bgcolor: 'background.paper', p: { xs: 1, sm: 3 } }}>
       <CardContent>
@@ -77,6 +81,40 @@ export default function PasswordGenerator({ options, setOptions, password, gener
             }}
           />
         </Box>
+
+        <Box sx={{ mb: 4 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
+            <Typography variant="body1" sx={{ fontWeight: 500 }}>
+              Password Length
+            </Typography>
+            <Typography variant="body1" color="primary.light" sx={{ fontWeight: 'bold', fontFamily: 'Outfit' }}>
+              {options.length} characters
+            </Typography>
+          </Box>
+          <Grid container spacing={2} alignItems="center">
+            <Grid size={12}>
+              <Slider
+                value={options.length}
+                onChange={handleLengthChange}
+                min={4}
+                max={64}
+                valueLabelDisplay="auto"
+                sx={{
+                  color: 'primary.main',
+                  height: 6,
+                  '& .MuiSlider-thumb': {
+                    width: 18,
+                    height: 18,
+                    '&:hover, &.Mui-focusVisible': {
+                      boxShadow: '0px 0px 0px 8px rgba(168, 85, 247, 0.16)'
+                    }
+                  }
+                }}
+              />
+            </Grid>
+          </Grid>
+        </Box>
+
       </CardContent>
     </Card>
   );
