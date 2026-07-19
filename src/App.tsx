@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ThemeProvider, CssBaseline, Container, Grid2 as Grid, Box, Alert, Snackbar } from '@mui/material';
 import theme from './theme';
-import { GenOptions, SavedPassword, PresetName } from './types';
+import type { GenOptions, SavedPassword, PresetName } from './types';
 import BrandingHeader from './components/BrandingHeader';
 import Footer from './components/Footer';
 import EducationalHub from './components/EducationalHub';
@@ -200,7 +200,6 @@ export default function App() {
           open={isSaveDialogOpen}
           onClose={() => setIsSaveDialogOpen(false)}
           onSave={handleSavePassword}
-          generatedPassword={password}
         />
 
         <Footer />

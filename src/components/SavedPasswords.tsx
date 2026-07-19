@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, Fragment } from 'react';
 import { Card, CardContent, Typography, Box, OutlinedInput, InputAdornment, Button, Grid2 as Grid, List, ListItem, ListItemText, ListItemSecondaryAction, IconButton, Paper, Divider } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
@@ -7,7 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import DownloadIcon from '@mui/icons-material/Download';
-import { SavedPassword } from '../types';
+import type { SavedPassword } from '../types';
 import { exportToTxt, exportToCsv, exportToJson } from '../utils/exporter';
 
 interface Props {
@@ -90,7 +90,7 @@ export default function SavedPasswords({ saved, onDelete, onClearAll, copyToClip
           ) : (
             <List sx={{ p: 0 }}>
               {filtered.map((item, idx) => (
-                <React.Fragment key={item.id}>
+                <Fragment key={item.id}>
                   {idx > 0 && <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.05)' }} />}
                   <ListItem sx={{ py: 1.5, px: 1 }}>
                     <ListItemText
@@ -129,7 +129,7 @@ export default function SavedPasswords({ saved, onDelete, onClearAll, copyToClip
                       </IconButton>
                     </ListItemSecondaryAction>
                   </ListItem>
-                </React.Fragment>
+                </Fragment>
               ))}
             </List>
           )}

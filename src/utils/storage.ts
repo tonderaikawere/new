@@ -1,4 +1,4 @@
-import { SavedPassword } from '../types';
+import type { SavedPassword } from '../types';
 
 const STORAGE_KEY = 'kawerify_tech_passwords';
 

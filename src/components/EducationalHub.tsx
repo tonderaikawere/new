@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Grid2 as Grid, Typography, Card, CardContent } from '@mui/material';
 import CalculateIcon from '@mui/icons-material/Calculate';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
@@ -54,7 +53,8 @@ export default function EducationalHub() {
                 <li><strong>Personal Info:</strong> Birthdays, pet names, and phone numbers are easily scrapeable on social media.</li>
               </ul>
             </CardContent>
-          </Grid>
+          </Card>
+        </Grid>
 
         <Grid size={{ xs: 12, md: 6 }}>
           <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>

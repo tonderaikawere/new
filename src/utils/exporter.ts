@@ -1,4 +1,4 @@
-import { SavedPassword } from '../types';
+import type { SavedPassword } from '../types';
 
 function triggerDownload(content: string, mimeType: string, filename: string) {
   const blob = new Blob([content], { type: mimeType });

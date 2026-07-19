@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Button } from '@mui/material';
 
 interface Props {
   open: boolean;
   onClose: () => void;
   onSave: (label: string) => void;
-  generatedPassword: string;
 }
 
-export default function SaveLabelDialog({ open, onClose, onSave, generatedPassword }: Props) {
+export default function SaveLabelDialog({ open, onClose, onSave }: Props) {
   const [label, setLabel] = useState('');
 
   const handleConfirm = () => {

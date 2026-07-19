@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Card, CardContent, Typography, TextField, Box, LinearProgress, Grid2 as Grid, Paper } from '@mui/material';
 
 function getPasswordComplexityPool(password: string): number {
@@ -11,7 +11,7 @@ function getPasswordComplexityPool(password: string): number {
 }
 
 function getCrackTime(entropy: number) {
-  if (entropy === 0) return 'Immediate';
+  if (entropy === 0) return { online: 'Immediate', offline: 'Immediate' };
   const onlineGuessesPerSec = 100;
   const offlineGuessesPerSec = 1e10;
 

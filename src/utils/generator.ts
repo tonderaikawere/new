@@ -1,4 +1,4 @@
-import { GenOptions } from '../types';
+import type { GenOptions } from '../types';
 
 export const lowercaseSet = 'abcdefghijklmnopqrstuvwxyz';
 export const uppercaseSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';

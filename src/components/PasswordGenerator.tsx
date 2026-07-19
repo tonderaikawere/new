@@ -1,14 +1,14 @@
-import React from 'react';
-import { Card, CardContent, Typography, Box, OutlinedInput, InputAdornment, IconButton, LinearProgress, Slider, Grid2 as Grid, FormControlLabel, Switch, Accordion, AccordionSummary, AccordionDetails, TextField, Chip } from '@mui/material';
+import type { Dispatch, SetStateAction, ChangeEvent } from 'react';
+import { Card, CardContent, Typography, Box, OutlinedInput, InputAdornment, IconButton, LinearProgress, Slider, Grid2 as Grid, FormControlLabel, Switch, Accordion, AccordionSummary, AccordionDetails, TextField, Chip, Alert } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { GenOptions, PresetName } from '../types';
+import type { GenOptions, PresetName } from '../types';
 
 interface Props {
   options: GenOptions;
-  setOptions: React.Dispatch<React.SetStateAction<GenOptions>>;
+  setOptions: Dispatch<SetStateAction<GenOptions>>;
   password: string;
   generate: () => void;
   onSave: () => void;
@@ -18,11 +18,11 @@ interface Props {
 }
 
 export default function PasswordGenerator({ options, setOptions, password, generate, onSave, copyToClipboard, strengthInfo, applyPreset }: Props) {
-  const handleLengthChange = (event: Event, newValue: number | number[]) => {
+  const handleLengthChange = (_event: any, newValue: number | number[]) => {
     setOptions(prev => ({ ...prev, length: newValue as number }));
   };
 
-  const handleToggleChange = (field: keyof GenOptions) => (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleToggleChange = (field: keyof GenOptions) => (event: ChangeEvent<HTMLInputElement>) => {
     const isChecked = event.target.checked;
     setOptions(prev => {
       const next = { ...prev, [field]: isChecked };
