@@ -3,6 +3,7 @@ import { Box, Grid2 as Grid, Typography, Card, CardContent } from '@mui/material
 import CalculateIcon from '@mui/icons-material/Calculate';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import StorageIcon from '@mui/icons-material/Storage';
+import LightbulbIcon from '@mui/icons-material/Lightbulb';
 
 export default function EducationalHub() {
   return (
@@ -53,8 +54,7 @@ export default function EducationalHub() {
                 <li><strong>Personal Info:</strong> Birthdays, pet names, and phone numbers are easily scrapeable on social media.</li>
               </ul>
             </CardContent>
-          </Card>
-        </Grid>
+          </Grid>
 
         <Grid size={{ xs: 12, md: 6 }}>
           <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
@@ -70,6 +70,25 @@ export default function EducationalHub() {
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 A password manager securely stores all your unique, complex credentials in an encrypted vault. You only need to remember one <strong>master passphrase</strong> to unlock your vault. This protects you against credential stuffing, phishing, and typing mistakes. Excellent, reputable options include Bitwarden, 1Password, or KeePass (offline).
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid size={{ xs: 12, md: 6 }}>
+          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+            <CardContent>
+              <Box sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
+                <LightbulbIcon color="success" sx={{ mr: 1 }} />
+                <Typography variant="h6" sx={{ fontFamily: 'Outfit', fontWeight: 600 }}>
+                  How to Remember Strong Secrets
+                </Typography>
+              </Box>
+              <Typography variant="body2" color="text.secondary" paragraph>
+                For master passwords that you must remember, use the **Passphrase** method (often called the Diceware or XKCD method).
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Combine 4 to 5 random, unrelated words (e.g. <code>correct-horse-battery-staple</code>). This creates a password that is extremely long (high entropy and impossible to crack) but very easy to visualize and remember. Avoid well-known quotes, book titles, or song lyrics, as attackers scan these database arrays.
               </Typography>
             </CardContent>
           </Card>
