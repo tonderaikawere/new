@@ -10,6 +10,7 @@ import SavedPasswords from './components/SavedPasswords';
 import StandaloneAnalyzer from './components/StandaloneAnalyzer';
 import SaveLabelDialog from './components/SaveLabelDialog';
 import { generatePassword, getPoolSize, calculateEntropy, getStrengthInfo } from './utils/generator';
+import { loadSavedPasswords, savePasswordsToStorage } from './utils/storage';
 
 const initialOptions: GenOptions = {
   length: 16,
@@ -36,6 +37,10 @@ export default function App() {
     message: '',
     severity: 'success'
   });
+
+  useEffect(() => {
+    setSavedPasswords(loadSavedPasswords());
+  }, []);
 
   const triggerAlert = (message: string, severity: 'success' | 'info' | 'warning' | 'error' = 'success') => {
     setAlertInfo({ open: true, message, severity });
@@ -127,6 +132,7 @@ export default function App() {
 
     const nextSaved = [newSaved, ...savedPasswords];
     setSavedPasswords(nextSaved);
+    savePasswordsToStorage(nextSaved);
     triggerAlert('Password saved successfully!', 'success');
   };
 
@@ -169,8 +175,19 @@ export default function App() {
             <Grid size={{ xs: 12, md: 5 }}>
               <SavedPasswords
                 saved={savedPasswords}
-                onDelete={() => {}}
-                onClearAll={() => {}}
+                onDelete={(id) => {
+                  const nextSaved = savedPasswords.filter(item => item.id !== id);
+                  setSavedPasswords(nextSaved);
+                  savePasswordsToStorage(nextSaved);
+                  triggerAlert('Password removed from history.', 'info');
+                }}
+                onClearAll={() => {
+                  if (window.confirm('Are you sure you want to delete all saved passwords? This action cannot be undone.')) {
+                    setSavedPasswords([]);
+                    savePasswordsToStorage([]);
+                    triggerAlert('All passwords cleared successfully.', 'warning');
+                  }
+                }}
                 copyToClipboard={copyToClipboard}
               />
             </Grid>
