@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, Typography, Box, OutlinedInput, InputAdornment, IconButton, LinearProgress, Slider, Grid2 as Grid } from '@mui/material';
+import { Card, CardContent, Typography, Box, OutlinedInput, InputAdornment, IconButton, LinearProgress, Slider, Grid2 as Grid, FormControlLabel, Switch } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
@@ -18,6 +18,10 @@ interface Props {
 export default function PasswordGenerator({ options, setOptions, password, generate, onSave, copyToClipboard, strengthInfo }: Props) {
   const handleLengthChange = (event: Event, newValue: number | number[]) => {
     setOptions(prev => ({ ...prev, length: newValue as number }));
+  };
+
+  const handleToggleChange = (field: keyof GenOptions) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    setOptions(prev => ({ ...prev, [field]: event.target.checked }));
   };
 
   return (
@@ -110,6 +114,38 @@ export default function PasswordGenerator({ options, setOptions, password, gener
                     }
                   }
                 }}
+              />
+            </Grid>
+          </Grid>
+        </Box>
+
+        <Box sx={{ mb: 4 }}>
+          <Typography variant="body1" sx={{ fontWeight: 500, mb: 1.5 }}>
+            Character Settings
+          </Typography>
+          <Grid container spacing={1}>
+            <Grid size={{ xs: 6, sm: 3 }}>
+              <FormControlLabel
+                control={<Switch checked={options.uppercase} onChange={handleToggleChange('uppercase')} color="primary" />}
+                label="A-Z"
+              />
+            </Grid>
+            <Grid size={{ xs: 6, sm: 3 }}>
+              <FormControlLabel
+                control={<Switch checked={options.lowercase} onChange={handleToggleChange('lowercase')} color="primary" />}
+                label="a-z"
+              />
+            </Grid>
+            <Grid size={{ xs: 6, sm: 3 }}>
+              <FormControlLabel
+                control={<Switch checked={options.numbers} onChange={handleToggleChange('numbers')} color="primary" />}
+                label="0-9"
+              />
+            </Grid>
+            <Grid size={{ xs: 6, sm: 3 }}>
+              <FormControlLabel
+                control={<Switch checked={options.symbols} onChange={handleToggleChange('symbols')} color="primary" />}
+                label="!@#$"
               />
             </Grid>
           </Grid>
