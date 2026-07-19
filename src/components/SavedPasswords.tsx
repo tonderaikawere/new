@@ -24,8 +24,9 @@ export default function SavedPasswords({ saved, onDelete, onClearAll, copyToClip
   };
 
   const filtered = saved.filter(item =>
-    item.label.toLowerCase().includes(search.toLowerCase()) ||
-    item.password.toLowerCase().includes(search.toLowerCase())
+    item.label.toLowerCase().includes(search.trim().toLowerCase()) ||
+    item.password.toLowerCase().includes(search.trim().toLowerCase()) ||
+    item.options.toLowerCase().includes(search.trim().toLowerCase())
   );
 
   return (
