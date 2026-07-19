@@ -1,7 +1,15 @@
 {
   "name": "kawerify-tech-password-generator",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tonderaikawere/ktpasswordgenerator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tonderaikawere/ktpasswordgenerator/issues"
+  },
+  "homepage": "https://github.com/tonderaikawere/ktpasswordgenerator#readme",
   "type": "module",
   "scripts": {
     "dev": "vite",
