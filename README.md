@@ -1,32 +1,31 @@
-# React + TypeScript + Vite
+# Kawerify Tech Passwords
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A premium, highly-secure password generation utility. Designed to help users generate strong, cryptographically secure passwords and learn why password security is critical.
 
-Currently, two official plugins are available:
+- **Developer**: Developed by [Kawerify Tech](https://kawerifytech.com).
+- **License**: Managed by Kawerify Tech as a tool for public use. **Strictly free of charge and non-commercial**. No monetization is permitted.
+- **Security**: Runs completely client-side in the browser. Saved passwords are kept in local storage and never transmitted to any servers.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Cryptographically strong random passwords (`window.crypto.getRandomValues`).
+- Syllable-based pronounceable passcodes (Easy to Speak).
+- Real-time password audit metrics (Entropy calculations and crack speed models).
+- Customizable character settings (exclude similar/confusing symbols, prefix/suffix affixes).
+- Local storage vault (Save, search, show/hide passwords).
+- File exporter (CSV spreadsheet, plain TXT log, and JSON backup).
+- Educational Security Hub (Learn entropy, common pitfalls, and password managers).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Installation
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Build & Deploy to Vercel
+
+```bash
+npm run build
+```
+Vite builds static distribution assets to `/dist` which are served seamlessly on Vercel.
