@@ -12,6 +12,16 @@ export function generatePassword(options: GenOptions): string {
   if (options.numbers) charPool += numberSet;
   if (options.symbols) charPool += symbolSet;
   
+  if (options.excludeAmbiguous) {
+    const ambiguous = /[{}[\]()\/\\'"`~,;:.<>]/g;
+    charPool = charPool.replace(ambiguous, '');
+  }
+  
+  if (options.easyToRead) {
+    const similar = /[l1Io0O5S2Z]/g;
+    charPool = charPool.replace(similar, '');
+  }
+  
   if (charPool === '') return '';
   
   const array = new Uint32Array(options.length);
