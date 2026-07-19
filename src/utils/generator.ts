@@ -41,6 +41,12 @@ export function generatePassword(options: GenOptions): string {
     const similar = /[l1Io0O5S2Z]/g;
     charPool = charPool.replace(similar, '');
   }
+
+  if (options.excludeChars) {
+    for (const char of options.excludeChars) {
+      charPool = charPool.split(char).join('');
+    }
+  }
   
   if (charPool === '') return '';
   
