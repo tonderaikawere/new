@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Grid2 as Grid, Typography, Card, CardContent } from '@mui/material';
 import CalculateIcon from '@mui/icons-material/Calculate';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
+import StorageIcon from '@mui/icons-material/Storage';
 
 export default function EducationalHub() {
   return (
@@ -51,6 +52,25 @@ export default function EducationalHub() {
                 <li><strong>Common Subsitutions:</strong> Changing "Password" to "P@$$w0rd" is heavily anticipated by modern cracking programs.</li>
                 <li><strong>Personal Info:</strong> Birthdays, pet names, and phone numbers are easily scrapeable on social media.</li>
               </ul>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid size={{ xs: 12, md: 6 }}>
+          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+            <CardContent>
+              <Box sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
+                <StorageIcon color="secondary" sx={{ mr: 1 }} />
+                <Typography variant="h6" sx={{ fontFamily: 'Outfit', fontWeight: 600 }}>
+                  Why Use a Password Manager?
+                </Typography>
+              </Box>
+              <Typography variant="body2" color="text.secondary" paragraph>
+                Since humans cannot remember dozens of 16-character random passwords, using a password manager is essential.
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                A password manager securely stores all your unique, complex credentials in an encrypted vault. You only need to remember one <strong>master passphrase</strong> to unlock your vault. This protects you against credential stuffing, phishing, and typing mistakes. Excellent, reputable options include Bitwarden, 1Password, or KeePass (offline).
+              </Typography>
             </CardContent>
           </Card>
         </Grid>
