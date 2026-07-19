@@ -62,3 +62,20 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(168, 85, 247, 0.6);
 }
+
+.MuiPaper-root {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease-in-out !important;
+}
+.MuiPaper-root:hover {
+  box-shadow: 0 12px 40px 0 rgba(168, 85, 247, 0.15) !important;
+}
+.MuiButton-root:active {
+  transform: scale(0.97) !important;
+}
+.MuiChip-root {
+  transition: all 0.2s ease-in-out;
+}
+.MuiChip-root:hover {
+  background-color: rgba(168, 85, 247, 0.15) !important;
+  transform: translateY(-1px);
+}
