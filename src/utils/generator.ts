@@ -5,7 +5,27 @@ export const uppercaseSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 export const numberSet = '0123456789';
 export const symbolSet = '!@#$%^&*()_+-=[]{}|;:\',./<>?';
 
+function generateSpeakable(length: number): string {
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
+  const consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'r', 's', 't', 'v', 'w', 'x', 'z'];
+  let result = '';
+  let isConsonant = true;
+  while (result.length < length) {
+    if (isConsonant) {
+      result += consonants[Math.floor(Math.random() * consonants.length)];
+    } else {
+      result += vowels[Math.floor(Math.random() * vowels.length)];
+    }
+    isConsonant = !isConsonant;
+  }
+  return result.substring(0, length);
+}
+
 export function generatePassword(options: GenOptions): string {
+  if (options.easyToSpeak) {
+    return generateSpeakable(options.length);
+  }
+
   let charPool = '';
   if (options.lowercase) charPool += lowercaseSet;
   if (options.uppercase) charPool += uppercaseSet;
