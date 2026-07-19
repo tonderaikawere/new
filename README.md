@@ -15,28 +15,28 @@ This application is designed as a zero-trust, static client-side single page app
 ```mermaid
 flowchart TD
     subgraph UI_Layer [User Interface Layer]
-        A[Branding Header &Presets] --> B[Generation Settings Panel]
-        B -->|Options: length, pool, affixes| C[Crypto Engine]
+        A["Branding Header and Presets"] --> B[Generation Settings Panel]
+        B -->|"Options: length, pool, affixes"| C[Crypto Engine]
         D[Manual Auditor Panel] -->|Raw String| E[Strength Meter]
     end
 
-    subgraph Logic_Layer [Cryptographic & Logic Layer]
+    subgraph Logic_Layer [Cryptographic and Logic Layer]
         C -->|window.crypto.getRandomValues| F[Generated Password]
         C -->|Pronounceable Algorithm| F
-        F --> G[Entropy calculation & metrics]
+        F --> G[Entropy calculation and metrics]
         G --> E
     end
 
-    subgraph Data_Isolation_Layer [Data Isolation Layer (Client-Side Only)]
+    subgraph Data_Layer [Data Isolation Layer - Client Side Only]
         F -->|Trigger Save| H[(Browser LocalStorage)]
-        H -->|Render History| I[History Drawer Drawer]
+        H -->|Render History| I[History Drawer]
         H -->|Export Data| J[TXT, CSV, JSON Exporters]
     end
 
-    classDef success fill:#00e676,stroke:#070a13,color:#070a13,fontWeight:bold;
-    classDef primary fill:#a855f7,stroke:#070a13,color:#fff;
-    classDef secondary fill:#06b6d4,stroke:#070a13,color:#fff;
-    classDef warning fill:#ff9800,stroke:#070a13,color:#fff;
+    classDef success fill:#00e676,stroke:#07162f,color:#07162f,fontWeight:bold;
+    classDef primary fill:#0b4a86,stroke:#07162f,color:#fff;
+    classDef secondary fill:#00acdb,stroke:#07162f,color:#fff;
+    classDef warning fill:#ff9800,stroke:#07162f,color:#fff;
 
     class F success;
     class C,E primary;
