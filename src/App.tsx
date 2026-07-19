@@ -219,3 +219,5 @@ export default function App() {
     </ThemeProvider>
   );
 }
+
+// Presets checks wired.
